@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-
 const Header = () => {
   const [activeSection, setActiveSection] = useState('about');
-
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['about', 'projects', 'skills', 'contact'];
@@ -16,47 +14,39 @@ const Header = () => {
       });
       if (current) setActiveSection(current);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  const navItems = [
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
-  return (
-    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
+  const navItems = [{
+    id: 'about',
+    label: 'About'
+  }, {
+    id: 'projects',
+    label: 'Projects'
+  }, {
+    id: 'skills',
+    label: 'Skills'
+  }, {
+    id: 'contact',
+    label: 'Contact'
+  }];
+  return <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-xl font-bold text-foreground">
-            Your Name
-          </div>
+          <div className="text-xl font-bold text-foreground">Dileep</div>
           
           <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`transition-colors duration-300 ${
-                  activeSection === item.id
-                    ? 'text-accent font-medium'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
+            {navItems.map(item => <button key={item.id} onClick={() => scrollToSection(item.id)} className={`transition-colors duration-300 ${activeSection === item.id ? 'text-accent font-medium' : 'text-muted-foreground hover:text-foreground'}`}>
                 {item.label}
-              </button>
-            ))}
+              </button>)}
           </nav>
 
           {/* Mobile menu button */}
@@ -67,8 +57,6 @@ const Header = () => {
           </button>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
