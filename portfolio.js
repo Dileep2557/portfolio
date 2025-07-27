@@ -191,19 +191,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Add loading animation for images
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('load', function() {
-            this.style.opacity = '1';
-        });
-        
-        // Set initial opacity
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
-    });
-});
 
 // Intersection Observer for fade-in animations
 const fadeInElements = document.querySelectorAll('.project-card, .skill-card, .about-card');
